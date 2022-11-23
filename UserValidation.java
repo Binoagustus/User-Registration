@@ -17,7 +17,19 @@ public class UserValidation {
 		System.out.println("(First letter must be cap and min 3 letters)");
 		String lastName = sc.next();
 		this.nameValidation(lastName);
+		
+		System.out.println(" Enter e-mail");
+		String email = sc.next();
+		String mailRegex = "^[a-zA-Z0-9_.-]+(@)[a-z]+([.])[a-z.]+$";
+		Pattern pattern = Pattern.compile(mailRegex);
+		Matcher mailMatch = pattern.matcher(email);
+		if (mailMatch.matches()) {
+			System.out.println("Email is valid");
 
+		} else {
+			System.out.println("Email is invalid");
+
+		}
 	}
 
 	public void nameValidation(String name) {
