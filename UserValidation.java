@@ -8,18 +8,27 @@ public class UserValidation {
 
 	public void userValidation() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter First");
+		System.out.println("Enter First Name");
 		System.out.println("(First letter must be cap and min 3 letters)");
 		String firstName = sc.next();
+		this.nameValidation(firstName);
 
-		String regexFirstName = "^[.A-Z]([a-z]+){2,}$"; // first letter cap and min 3 letters
-		Pattern pattern = Pattern.compile(regexFirstName);
-		Matcher matcher = pattern.matcher(firstName);
+		System.out.println("\nEnter Last Name");
+		System.out.println("(First letter must be cap and min 3 letters)");
+		String lastName = sc.next();
+		this.nameValidation(lastName);
+
+	}
+
+	public void nameValidation(String name) {
+		String regex = "^[.A-Z]([a-z]+){2,}$"; // first letter cap and min 3 letters
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(name);
 		if (matcher.matches()) {
-			System.out.println("FisrtName is valid");
+			System.out.println("Name is valid");
 
 		} else {
-			System.out.println("Firstname is invalid");
+			System.out.println("Name is invalid");
 
 		}
 	}
