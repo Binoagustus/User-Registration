@@ -72,7 +72,7 @@ public class UserValidation {
 		
 		System.out.println(" Enter the password ");
 		String password = sc.next();
-		String passRegex = "^(?=.*[A-Z])([a-z]*).{8,}$";
+		String passRegex = "^(?=.*[0-9])(?=.*[A-Z])([a-z]*).{8,}$";
 		Pattern pattern  = Pattern.compile(passRegex);
 		Matcher passMatch = pattern.matcher(password);
 		if(passMatch.matches()) {
