@@ -59,7 +59,6 @@ public class UserValidation {
 		String phoneRegex = "^(91)\\s[6-9]{1}[0-9]{9}$";
 		Pattern pattern = Pattern.compile(phoneRegex);
 		Matcher phoneMatch = pattern.matcher(mobileNumber);
-		
 		if (phoneMatch.matches()) {
 			System.out.println("Phone Number is valid");
 
@@ -67,5 +66,20 @@ public class UserValidation {
 			System.out.println("Phone Number is invalid");
 
 		}
+	}
+	
+	public void passValidation() {
+		
+		System.out.println(" Enter the password ");
+		String password = sc.next();
+		String passRegex = "^[\\w]{8,}$";
+		Pattern pattern  = Pattern.compile(passRegex);
+		Matcher passMatch = pattern.matcher(password);
+		if(passMatch.matches()) {
+			System.out.println("Password is valid");
+		} else {
+			System.out.println("Password is invalid");
+		}
+		
 	}
 }
