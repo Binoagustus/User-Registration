@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class UserValidation {
+public class UserValidator {
 
 	Scanner sc = new Scanner(System.in);
 
@@ -22,16 +22,16 @@ public class UserValidation {
 		this.nameValidation(lastName);
 	}
 
-	public void nameValidation(String name) {
+	public String nameValidation(String name) {
 		String regex = "^[.A-Z]([a-z]+){2,}$"; // first letter cap and min 3 letters
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(name);
 		if (matcher.matches()) {
 			System.out.println("Name is valid");
-
+			return "happy";
 		} else {
 			System.out.println("Name is invalid");
-
+			return "sad";
 		}
 	}
 	
@@ -39,7 +39,8 @@ public class UserValidation {
 
 		System.out.println(" Enter e-mail");
 		String email = sc.next();
-		String mailRegex = "^[a-zA-Z0-9_.-]+(@)[a-z]+([.])[a-z.]+$";
+//		String[] mailArray = {"abc@yahoo.com", "abc-100@yahoo.com", "abc.100@yahoo.com", "abc111@abc.com", "abc-100@abc.net", "abc.100@abc.com.au", "abc@1.com", "abc@gmail.com.com", "abc+100@gmail.com"};
+		String mailRegex = "^[a-zA-Z0-9+_.-]+(@)[a-z]+([.])[a-z.]+$";
 		Pattern pattern = Pattern.compile(mailRegex);
 		Matcher mailMatch = pattern.matcher(email);
 		if (mailMatch.matches()) {
@@ -71,8 +72,9 @@ public class UserValidation {
 	public void passValidation() {
 		
 		System.out.println(" Enter the password ");
-		String password = sc.next();
-		String passRegex = "^(?=.*[0-9])(?=.*[A-Z])([a-z]*).{8,}$";
+		String password = sc.nextLine();
+//		String passRegex = "^(?=.*[0-9])(?=.*[A-Z])([^@!~#$%&^*+,])([a-z]*).{8,}$";
+		String passRegex = "(?=.*[A-Z])(?=.*[0-9])(?=[^@#^$&]*[@#^$&][^@#$^&]*$).{8,}";
 		Pattern pattern  = Pattern.compile(passRegex);
 		Matcher passMatch = pattern.matcher(password);
 		if(passMatch.matches()) {

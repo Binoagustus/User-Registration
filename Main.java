@@ -6,7 +6,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		UserValidation userObj = new UserValidation();
+		UserValidator userObj = new UserValidator();
 		boolean loop = true;
 
 		while (loop) {
