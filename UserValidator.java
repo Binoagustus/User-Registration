@@ -27,17 +27,15 @@ public class UserValidator {
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(name);
 		if (matcher.matches()) {
-//			System.out.println("Name is valid");
 			return "happy";
 		} else {
-//			System.out.println("Name is invalid");
 			return "sad";
 		}
 	}
 	
 	public String emailValidation(String email) {
 		
-		String mailRegex = "^[a-zA-Z0-9+_.-]+(@)[^.][a-z]+([.])[a-z.]+$";
+		String mailRegex = "^[a-zA-Z0-9+_.-]+(@)[^.][0-9a-z]*([.])[a-z.]+$";
 		Pattern pattern = Pattern.compile(mailRegex);
 		Matcher mailMatch = pattern.matcher(email);
 		if (mailMatch.matches()) {
@@ -55,10 +53,8 @@ public class UserValidator {
 		Pattern pattern = Pattern.compile(phoneRegex);
 		Matcher phoneMatch = pattern.matcher(mobileNumber);
 		if (phoneMatch.matches()) {
-			System.out.println("Phone Number is valid");
 			return "happy";
 		} else {
-			System.out.println("Phone Number is invalid");
 			return "sad";
 		}
 	}
@@ -70,10 +66,8 @@ public class UserValidator {
 		Pattern pattern  = Pattern.compile(passRegex);
 		Matcher passMatch = pattern.matcher(password);
 		if(passMatch.matches()) {
-			System.out.println("Password is valid");
 			return "happy";
 		} else {
-			System.out.println("Password is invalid");
 			return "sad";
 		}
 	}
