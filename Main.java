@@ -25,15 +25,22 @@ public class Main {
 				break;
 
 			case 3:
-				userObj.emailValidation();
+				System.out.println(" Enter e-mail");
+				String email = sc.next();
+				userObj.emailValidation(email);
 				break;
 
 			case 4:
-				userObj.phoneNumValidation();
+				System.out.println(" Enter a mobile number ");
+				System.out.println("Format : (91_10digit mobile number)");
+				String mobileNumber = sc.nextLine();
+				userObj.phoneNumValidation(mobileNumber);
 				break;
 
 			case 5:
-				userObj.passValidation();
+				System.out.println(" Enter the password ");
+				String password = sc.nextLine();
+				userObj.passValidation(password);
 				break;
 
 			case 6:
