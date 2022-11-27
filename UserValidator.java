@@ -27,61 +27,54 @@ public class UserValidator {
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(name);
 		if (matcher.matches()) {
-			System.out.println("Name is valid");
+//			System.out.println("Name is valid");
 			return "happy";
 		} else {
-			System.out.println("Name is invalid");
+//			System.out.println("Name is invalid");
 			return "sad";
 		}
 	}
 	
-	public void emailValidation() {
-
-		System.out.println(" Enter e-mail");
-		String email = sc.next();
-//		String[] mailArray = {"abc@yahoo.com", "abc-100@yahoo.com", "abc.100@yahoo.com", "abc111@abc.com", "abc-100@abc.net", "abc.100@abc.com.au", "abc@1.com", "abc@gmail.com.com", "abc+100@gmail.com"};
-		String mailRegex = "^[a-zA-Z0-9+_.-]+(@)[a-z]+([.])[a-z.]+$";
+	public String emailValidation(String email) {
+		
+		String mailRegex = "^[a-zA-Z0-9+_.-]+(@)[^.][a-z]+([.])[a-z.]+$";
 		Pattern pattern = Pattern.compile(mailRegex);
 		Matcher mailMatch = pattern.matcher(email);
 		if (mailMatch.matches()) {
 			System.out.println("Email is valid");
-
+			return "happy";
 		} else {
 			System.out.println("Email is invalid");
-
+			return "sad";
 		}
 	}
 	
-	public void phoneNumValidation() {
+	public String phoneNumValidation(String mobileNumber) {
 		
-		System.out.println(" Enter a mobile number ");
-		System.out.println("Format : (91_10digit mobile number)");
-		String mobileNumber = sc.nextLine();
 		String phoneRegex = "^(91)\\s[6-9]{1}[0-9]{9}$";
 		Pattern pattern = Pattern.compile(phoneRegex);
 		Matcher phoneMatch = pattern.matcher(mobileNumber);
 		if (phoneMatch.matches()) {
 			System.out.println("Phone Number is valid");
-
+			return "happy";
 		} else {
 			System.out.println("Phone Number is invalid");
-
+			return "sad";
 		}
 	}
 	
-	public void passValidation() {
+	public String passValidation(String password) {
 		
-		System.out.println(" Enter the password ");
-		String password = sc.nextLine();
 //		String passRegex = "^(?=.*[0-9])(?=.*[A-Z])([^@!~#$%&^*+,])([a-z]*).{8,}$";
 		String passRegex = "(?=.*[A-Z])(?=.*[0-9])(?=[^@#^$&]*[@#^$&][^@#$^&]*$).{8,}";
 		Pattern pattern  = Pattern.compile(passRegex);
 		Matcher passMatch = pattern.matcher(password);
 		if(passMatch.matches()) {
 			System.out.println("Password is valid");
+			return "happy";
 		} else {
 			System.out.println("Password is invalid");
+			return "sad";
 		}
-		
 	}
 }
