@@ -2,69 +2,127 @@ package com.user_registration;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Scanner;
+
 import org.junit.Test;
 
 public class UserValidatorTest {
 
+	Scanner sc = new Scanner(System.in);
 	UserValidator user = new UserValidator();
-	
+
 	@Test
-	public void givenFirstName_WhenTrue_ShouldReturnHappy() {
-		String result = user.nameValidation("Bino");
-		assertEquals("happy", result);
+	public void givenFirstName_WhenFalse() throws InvalidFirstNameException {
+		System.out.println("Enter First Name");
+		String firstName = sc.next();
+		String result = user.nameValidation(firstName);
+		if ("sad" == result) {
+			try {
+				throw new InvalidFirstNameException();
+			} catch (InvalidFirstNameException e) {
+				e.printStackTrace();
+				e.printCause();
+			}
+		} else {
+			assertEquals("happy", result);
+		}
 	}
-	
-	@Test
-	public void givenFirstName_WhenFalse_ShouldReturnSad() {
-		String result = user.nameValidation("bino");
-		assertEquals("sad", result);
+
+	class InvalidFirstNameException extends Exception {
+		public void printCause() {
+			System.out.println("Invalid First Name Exception");
+		}
 	}
-	
+
 	@Test
-	public void givenLastName_WhenTrue_ShouldReturnHappy() {
-		String result = user.nameValidation("Agus");
-		assertEquals("happy", result);
+	public void givenLastName_WhenFalse() throws InvalidLastNameException {
+		System.out.println("Enter Last Name");
+		String lastName = sc.next();
+		String result = user.nameValidation(lastName);
+		if ("sad" == result) {
+			try {
+				throw new InvalidLastNameException();
+			} catch (InvalidLastNameException e) {
+				e.printStackTrace();
+				e.printCause();
+			}
+		} else {
+			assertEquals("happy", result);
+		}
 	}
-	
-	@Test
-	public void givenLastName_WhenFalse_ShouldReturnSad() {
-		String result = user.nameValidation("ag");
-		assertEquals("sad", result);
+
+	class InvalidLastNameException extends Exception {
+		public void printCause() {
+			System.out.println("Invalid Last Name Exception");
+		}
 	}
-	
+
 	@Test
-	public void givenMobileNum_WhenTrue_ShouldReturnHappy() {
-		String result = user.phoneNumValidation("91 9087367872");
-		assertEquals("happy", result);
+	public void givenMobileNum_WhenFalse() throws InvalidMobileNumberException {
+		System.out.println("Enter Mobile number");
+		String mobileNum = sc.nextLine();
+		String result = user.phoneNumValidation(mobileNum);
+		if ("sad" == result) {
+			try {
+				throw new InvalidMobileNumberException();
+			} catch (InvalidMobileNumberException e) {
+				e.printStackTrace();
+				e.printCause();
+			}
+		} else {
+			assertEquals("happy", result);
+		}
 	}
-	
-	@Test
-	public void givenMobileNum_WhenFalse_ShouldReturnSad() {
-		String result = user.phoneNumValidation("7010404489");
-		assertEquals("sad", result);
+
+	class InvalidMobileNumberException extends Exception {
+		public void printCause() {
+			System.out.println("Invalid Mobile Number Exception");
+		}
 	}
-	
+
 	@Test
-	public void givenPassword_WhenTrue_ShouldReturnHappy() {
-		String result = user.passValidation("Bino@1234");
-		assertEquals("happy", result);
+	public void givenMail_WhenFalse() throws InvalidMailException {
+		System.out.println("Enter mail id");
+		String mail = sc.nextLine();
+		String result = user.emailValidation(mail);
+		if ("sad" == result) {
+			try {
+				throw new InvalidMailException();
+			} catch (InvalidMailException e) {
+				e.printStackTrace();
+				e.printCause();
+			}
+		} else {
+			assertEquals("happy", result);
+		}
 	}
-	
-	@Test
-	public void givenPassword_WhenFalse_ShouldReturnSad() {
-		String result = user.passValidation("Bino@12#34");
-		assertEquals("sad", result);
+
+	class InvalidMailException extends Exception {
+		public void printCause() {
+			System.out.println("Invalid Mail-id Exception");
+		}
 	}
-	
+
 	@Test
-	public void givenMail_WhenTrue_ShouldReturnHappy() {
-		String result = user.emailValidation("bino.06@gmail.com");
-		assertEquals("happy", result);
+	public void givenPassword_WhenFalse() throws InvalidPasswordException {
+		System.out.println("Enter the password");
+		String password = sc.nextLine();
+		String result = user.passValidation(password);
+		if ("sad" == result) {
+			try {
+				throw new InvalidPasswordException();
+			} catch (InvalidPasswordException e) {
+				e.printStackTrace();
+				e.printCause();
+			}
+		} else {
+			assertEquals("happy", result);
+		}
 	}
-	
-	@Test
-	public void givenMail_WhenFalse_ShouldReturnSad() {
-		String result = user.emailValidation("abc@.gmail.com");
-		assertEquals("sad", result);
+
+	class InvalidPasswordException extends Exception {
+		public void printCause() {
+			System.out.println("Invalid Password Exception");
+		}
 	}
 }
